@@ -88,19 +88,19 @@ if __name__ == '__main__':
 
     semtypes = ["gauss", "gumbel", "logistic"]
     ds = [5, 10, 15, 20, 30, 40]
-    torch.multiprocessing.spawn(worker, args=(ds, semtypes), nprocs=torch.cuda.device_count(), join=True)
+    # torch.multiprocessing.spawn(worker, args=(ds, semtypes), nprocs=torch.cuda.device_count(), join=True)
 
-    # device = torch.device("cuda")
+    device = torch.device("cuda")
     
-    # for sm in range(len(semtypes)):
-    #     for dd in range(len(ds)):
-    #         if semtypes[sm] != "logistic":
-    #             loss_type = "l2"
-    #             graph_type = "ER"
-    #         else:
-    #             loss_type = "logistic"
-    #             graph_type = "BP"
-    #         estimate_once_notears_sgld(ds[dd], semtypes[sm], graph_type, seed=6000, lambda1=0, loss_type=loss_type, BB=200, device=device)
+    for sm in range(len(semtypes)):
+        for dd in range(len(ds)):
+            if semtypes[sm] != "logistic":
+                loss_type = "l2"
+                graph_type = "ER"
+            else:
+                loss_type = "logistic"
+                graph_type = "BP"
+            estimate_once_notears_sgld(ds[dd], semtypes[sm], graph_type, seed=6000, lambda1=0, loss_type=loss_type, BB=200, device=device)
 
 
     # pool = mp.Pool(processes=6)
