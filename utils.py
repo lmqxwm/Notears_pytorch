@@ -78,7 +78,7 @@ def simulate_linear_sem(W, n, sem_type, noise_scale=None, device=torch.device("c
     
     if noise_scale is None:
         scale_vec = torch.ones(d, device=device)
-    elif torch.isscalar(torch.tensor(noise_scale)):
+    elif torch.tensor(noise_scale).numel() == 1:
         scale_vec = noise_scale * torch.ones(d, device=device)
     else:
         if len(noise_scale) != d:
