@@ -2,4 +2,4 @@
 
 Mengqi Liu, Sep 2023
 
-Run NOTEARS by PyTorch.
+Run NOTEARS in PyTorch framework, allowing for various optimizers and accelerating in GPU.
